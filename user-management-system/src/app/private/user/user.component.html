@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <div class="header my-4 d-flex justify-content-between">
+        <p class="h3">Click on user to edit it!</p>
+        <input placeholder="Filter Users" class="form-control w-50" type="search" [(ngModel)]="searchString">
+    </div>
+    <div class="body">
+
+        <table *ngIf="allUsers && allUsers.length" class="table" id='tab'>
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of filteredUsers();" (click)="editUser(user.id)">
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.surname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.password }}</td>
+                    <td>{{ user.id }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <button (click)="createUser()" class="btn btn-warning">Create New User</button>
+    </div>
+</div>

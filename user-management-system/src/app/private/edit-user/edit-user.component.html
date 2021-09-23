@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <div class="h3 my-4 text-center"> Current User ID: {{ user_id }} </div>
+    <div class="d-flex justify-content-center">
+        <form *ngIf="editUserForm" [formGroup]="editUserForm" class="user-form">
+            <div class="form-group">
+                <!-- Name input: -->
+                <label for="name">Name:</label>
+                <input class="form-control" type="text" formControlName="name" id="name" placeholder="Name">
+                <div class="text-danger" *ngIf="editUserForm.get('name').touched && editUserForm.get('name').invalid">Please enter user name
+                </div>
+            </div>
+            <div class="form-group">
+                <!-- Surname input: -->
+                <label for="surname">Surname:</label>
+                <input class="form-control" type="text" formControlName="surname" id="surname" placeholder="Surname">
+                <div class="text-danger" *ngIf="editUserForm.get('surname').touched && editUserForm.get('surname').invalid">Please enter
+                    user surname
+                </div>
+            </div>
+            <div class="form-group">
+                <!-- Email input: -->
+                <label for="email">Email:</label>
+                <input class="form-control" type="email" formControlName="email" id="email" placeholder="Email">
+                <div class="text-danger" *ngIf="editUserForm.get('email').touched && editUserForm.get('email').invalid">Please enter user
+                    email
+                </div>
+            </div>
+            <div class="form-group">
+                <!-- Password input: -->
+                <label for="password">Password:</label>
+                <input class="form-control" type="text" formControlName="password" id="password" placeholder="Password">
+                <div class="text-danger" *ngIf="editUserForm.get('password').touched && editUserForm.get('password').invalid">Please enter user
+                    password
+                </div>
+                <div class="form-group d-flex justify-content-between my-4">
+                    <button class="btn btn-success" (click)="updateUser()"
+                        [disabled]="editUserForm.invalid">Save</button>
+                    <button class="btn btn-warning" (click)="clearForm()">Clear</button>
+                    <button class="btn btn-danger" (click)="deleteUser()">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
